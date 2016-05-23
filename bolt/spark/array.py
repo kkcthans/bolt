@@ -1,4 +1,4 @@
-from __future__ import print_function, divide
+from __future__ import print_function, division
 from numpy import asarray, unravel_index, prod, mod, ndarray, ceil, where, \
     r_, sort, argsort, array, random, arange, ones, expand_dims, sum
 from itertools import groupby
