@@ -1130,4 +1130,4 @@ class BoltArraySpark(BoltArray):
         -------
         BoltArraySpark
         """
-        return __div__(self, arry)
+        return self.__div__(arry)
