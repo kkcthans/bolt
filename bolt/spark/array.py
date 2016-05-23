@@ -1,4 +1,4 @@
-from __future__ import print_function
+from __future__ import print_function, division
 from numpy import asarray, unravel_index, prod, mod, ndarray, ceil, where, \
     r_, sort, argsort, array, random, arange, ones, expand_dims, sum
 from itertools import groupby
@@ -1114,7 +1114,6 @@ class BoltArraySpark(BoltArray):
         if not all([x == y for (x,y) in zip(self.shape, arry.shape)]):
             raise ValueError("All the input array dimensions must match exactly")
         
-        from __future__ import division
         rdd = self._rdd.join(arry._rdd).mapValues(lambda x: x[0] / x[1])
         return self._constructor(rdd).__finalize__(self)
 
