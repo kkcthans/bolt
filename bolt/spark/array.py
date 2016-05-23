@@ -1119,7 +1119,7 @@ class BoltArraySpark(BoltArray):
         return self._constructor(rdd).__finalize__(self)
 
     def __truediv__(self, arry):
-         """
+        """
         If true division all ready imported, just use division, as true division is imported there
 
         Paramters
