@@ -1038,7 +1038,7 @@ class BoltArraySpark(BoltArray):
             
         rdd = self._rdd.join(arry._rdd).mapValues(lambda x: x[0] + x[1])
         return self._constructor(rdd).__finalize__(self)
-        
+
     def __sub__(self, arry):
         """
         Subtract another array (arry) element-wise from this array.
@@ -1064,7 +1064,7 @@ class BoltArraySpark(BoltArray):
             
         rdd = self._rdd.join(arry._rdd).mapValues(lambda x: x[0] - x[1])
         return self._constructor(rdd).__finalize__(self)
-        
+
     def __mul__(self, arry):
         """
         Multiply this array element-wise with another array (arry).
@@ -1090,7 +1090,7 @@ class BoltArraySpark(BoltArray):
             
         rdd = self._rdd.join(arry._rdd).mapValues(lambda x: x[0] * x[1])
         return self._constructor(rdd).__finalize__(self)
-        
+
     def __div__(self, arry):
         """
         Divide this array by another array (arry) element-wise.  Always use true division
@@ -1117,7 +1117,7 @@ class BoltArraySpark(BoltArray):
         from __future__ import division
         rdd = self._rdd.join(arry._rdd).mapValues(lambda x: x[0] / x[1])
         return self._constructor(rdd).__finalize__(self)
-        
+
     def __truediv__(self, arry):
          """
         If true division all ready imported, just use division, as true division is imported there
