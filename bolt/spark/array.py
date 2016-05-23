@@ -1,4 +1,4 @@
-from __future__ import print_function, division
+from __future__ import print_function
 from numpy import asarray, unravel_index, prod, mod, ndarray, ceil, where, \
     r_, sort, argsort, array, random, arange, ones, expand_dims, sum
 from itertools import groupby
@@ -1033,8 +1033,8 @@ class BoltArraySpark(BoltArray):
             if not isinstance(arry, BoltArraySpark):
                 raise ValueError("other must be local array or spark array, got %s" % type(arry))
 
-        if not all([x == y]):
-            raise ValueError("all the input array dimensions must match exactly")
+        if not all([x == y for (x,y) in zip(self.shape, arry.shape)]):
+            raise ValueError("All the input array dimensions must match exactly")
             
         rdd = self._rdd.join(arry._rdd).mapValues(lambda x: x[0] + x[1])
         return self._constructor(rdd).__finalize__(self)
@@ -1059,8 +1059,8 @@ class BoltArraySpark(BoltArray):
             if not isinstance(arry, BoltArraySpark):
                 raise ValueError("other must be local array or spark array, got %s" % type(arry))
 
-        if not all([x == y]):
-            raise ValueError("all the input array dimensions must match exactly")
+        if not all([x == y for (x,y) in zip(self.shape, arry.shape)]):
+            raise ValueError("All the input array dimensions must match exactly")
             
         rdd = self._rdd.join(arry._rdd).mapValues(lambda x: x[0] - x[1])
         return self._constructor(rdd).__finalize__(self)
@@ -1085,8 +1085,8 @@ class BoltArraySpark(BoltArray):
             if not isinstance(arry, BoltArraySpark):
                 raise ValueError("other must be local array or spark array, got %s" % type(arry))
 
-        if not all([x == y]):
-            raise ValueError("all the input array dimensions must match exactly")
+        if not all([x == y for (x,y) in zip(self.shape, arry.shape)]):
+            raise ValueError("All the input array dimensions must match exactly")
             
         rdd = self._rdd.join(arry._rdd).mapValues(lambda x: x[0] * x[1])
         return self._constructor(rdd).__finalize__(self)
@@ -1111,8 +1111,8 @@ class BoltArraySpark(BoltArray):
             if not isinstance(arry, BoltArraySpark):
                 raise ValueError("other must be local array or spark array, got %s" % type(arry))
 
-        if not all([x == y]):
-            raise ValueError("all the input array dimensions must match exactly")
+        if not all([x == y for (x,y) in zip(self.shape, arry.shape)]):
+            raise ValueError("All the input array dimensions must match exactly")
         
         from future import division
         rdd = self._rdd.join(arry._rdd).mapValues(lambda x: x[0] / x[1])
